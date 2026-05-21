@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { labs } from '@/lib/lab';
+import Link from 'next/link';
 
 export default function LabsPage() {
   return (

@@ -14,26 +14,26 @@
 
 This project is designed to simulate real-world vulnerability scenarios across 7 main lab modules:
 
-| Lab Module | Difficulty | Focus Area / Description |
-| :--- | :---: | :--- |
-| **IDOR (Insecure Direct Object Reference)** *(Active)* | Beginner | Exploit sensitive data of other users by manipulating predictable object ID parameters. |
-| **SQL Injection** | Beginner | Manipulate relational database queries due to a lack of server-side input sanitization. |
-| **Cross-Site Scripting (XSS)** | Beginner | Inject malicious JavaScript (Reflected & Stored) to be executed in the victim's browser. |
-| **Broken Access Control** | Intermediate | Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls. |
-| **Insecure File Upload** | Intermediate | Achieve Remote Code Execution (RCE) by uploading malicious files without MIME/extension validation. |
-| **JWT Misconfiguration** | Intermediate | Forge identity tokens due to weak secret keys or missing signature verification. |
-| **SSRF Simulation** | Intermediate | Exploit the backend server to make unauthorized requests to internal networks/simulated services. |
+| Lab Module                                             |  Difficulty  | Focus Area / Description                                                                              |
+| :----------------------------------------------------- | :----------: | :---------------------------------------------------------------------------------------------------- |
+| **IDOR (Insecure Direct Object Reference)** _(Active)_ |   Beginner   | Exploit sensitive data of other users by manipulating predictable object ID parameters.               |
+| **SQL Injection**                                      |   Beginner   | Manipulate relational database queries due to a lack of server-side input sanitization.               |
+| **Cross-Site Scripting (XSS)**                         |   Beginner   | Inject malicious JavaScript (Reflected & Stored) to be executed in the victim's browser.              |
+| **Broken Access Control**                              | Intermediate | Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls. |
+| **Insecure File Upload**                               | Intermediate | Achieve Remote Code Execution (RCE) by uploading malicious files without MIME/extension validation.   |
+| **JWT Misconfiguration**                               | Intermediate | Forge identity tokens due to weak secret keys or missing signature verification.                      |
+| **SSRF Simulation**                                    | Intermediate | Exploit the backend server to make unauthorized requests to internal networks/simulated services.     |
 
 ---
 
 ## Tech Stack & Architecture
 
-* **Framework:** Next.js 16 (React 19, App Router)
-* **Styling:** Tailwind CSS v4 & PostCSS
-* **ORM:** Prisma ORM v7 (Modular Client Generation)
-* **Database:** Supabase (PostgreSQL)
-* **Driver Adapter:** `@prisma/adapter-pg` & `pg` (Node Postgres)
-* **Runtime Compiler:** `tsx` & TypeScript
+- **Framework:** Next.js 16 (React 19, App Router)
+- **Styling:** Tailwind CSS v4 & PostCSS
+- **ORM:** Prisma ORM v7 (Modular Client Generation)
+- **Database:** Supabase (PostgreSQL)
+- **Driver Adapter:** `@prisma/adapter-pg` & `pg` (Node Postgres)
+- **Runtime Compiler:** `tsx` & TypeScript
 
 ---
 
@@ -42,26 +42,32 @@ This project is designed to simulate real-world vulnerability scenarios across 7
 Follow the steps below to run the lab in your local environment:
 
 ### 1. Prerequisites
+
 Ensure you have the following installed:
-* [Node.js](https://nodejs.org) (v20 or higher)
-* A [Supabase](https://supabase.com) account (for a free cloud PostgreSQL database)
+
+- [Node.js](https://nodejs.org) (v20 or higher)
+- A [Supabase](https://supabase.com) account (for a free cloud PostgreSQL database)
 
 ### 2. Clone the Repository
+
 ```bash
 git clone https://github.com/Skywalks567/vulnlabjs.git
 cd vulnlabjs
 ```
 
 ### 3. Configure Environment Variables
+
 Copy the `.env.example` file to `.env` and input your Supabase database credentials:
+
 ```bash
 cp .env.example .env
 ```
 
 Configure your `.env` file with your Supabase credentials:
-* `DATABASE_URL`: Uses the pooling connection on port `6543` with the `?pgbouncer=true` parameter (for application runtime).
-* `DIRECT_URL`: Uses the direct PostgreSQL connection on port `5432` (for migrations/CLI).
-* `JWT_SECRET`: A secure random string for JWT signing.
+
+- `DATABASE_URL`: Uses the pooling connection on port `6543` with the `?pgbouncer=true` parameter (for application runtime).
+- `DIRECT_URL`: Uses the direct PostgreSQL connection on port `5432` (for migrations/CLI).
+- `JWT_SECRET`: A secure random string for JWT signing.
 
 ```env
 DATABASE_URL="postgresql://postgres.yourdb:yourpassword@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
@@ -70,23 +76,29 @@ JWT_SECRET="replace-with-a-strong-secret-key"
 ```
 
 ### 4. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 5. Sync Database Schema to Supabase
+
 Use the Prisma CLI to apply the full table schema (`LabUser`, `LabNote`, `LabProduct`) directly to your Supabase database:
+
 ```bash
 npx prisma db push
 ```
 
 ### 6. Seed the Database
+
 Run the seed script to load mock user accounts (such as `admin`, `alice`, and `bob`) and initial product data into your Supabase database:
+
 ```bash
 npm run prisma:seed
 ```
 
 ### 7. Run the Development Server
+
 ```bash
 npm run dev
 ```
@@ -99,9 +111,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to start exp
 
 > [!WARNING]
 > **THIS PROJECT IS INTENTIONALLY CONFIGURED WITH SECURITY VULNERABILITIES.**
-> * Do not deploy this application to public servers, open VPS hosting, or production environments.
-> * Use this project only in a local environment (`localhost`) for educational and web security training purposes.
-> * The developer is not responsible for any misuse of code or damage caused by using this repository outside of official learning purposes.
+>
+> - Do not deploy this application to public servers, open VPS hosting, or production environments.
+> - Use this project only in a local environment (`localhost`) for educational and web security training purposes.
+> - The developer is not responsible for any misuse of code or damage caused by using this repository outside of official learning purposes.
 
 ---
-

@@ -17,7 +17,8 @@ export const labs = [
     slug: 'idor',
     title: 'IDOR Lab',
     difficulty: 'Beginner',
-    description: 'Learn how predictable object IDs can expose other users’ data.',
+    description:
+      'Learn how predictable object IDs can expose other users’ data.',
     tags: ['Access Control', 'API'],
   },
   {
@@ -38,7 +39,8 @@ export const labs = [
     slug: 'jwt-misconfiguration',
     title: 'JWT Misconfiguration Lab',
     difficulty: 'Intermediate',
-    description: 'Learn common JWT mistakes such as weak secret and missing verification.',
+    description:
+      'Learn common JWT mistakes such as weak secret and missing verification.',
     tags: ['JWT', 'Auth'],
   },
   {
