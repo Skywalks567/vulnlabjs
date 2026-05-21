@@ -1,0 +1,51 @@
+export const labs = [
+  {
+    slug: 'sql-injection',
+    title: 'SQL Injection Lab',
+    difficulty: 'Beginner',
+    description: 'Learn how unsafe SQL queries can expose sensitive data.',
+    tags: ['Injection', 'Database', 'OWASP'],
+  },
+  {
+    slug: 'xss',
+    title: 'XSS Lab',
+    difficulty: 'Beginner',
+    description: 'Learn reflected and stored cross-site scripting.',
+    tags: ['XSS', 'Frontend', 'Sanitization'],
+  },
+  {
+    slug: 'idor',
+    title: 'IDOR Lab',
+    difficulty: 'Beginner',
+    description: 'Learn how predictable object IDs can expose other users’ data.',
+    tags: ['Access Control', 'API'],
+  },
+  {
+    slug: 'broken-access-control',
+    title: 'Broken Access Control Lab',
+    difficulty: 'Intermediate',
+    description: 'Learn role bypass and missing authorization checks.',
+    tags: ['Authorization', 'Admin'],
+  },
+  {
+    slug: 'insecure-file-upload',
+    title: 'Insecure File Upload Lab',
+    difficulty: 'Intermediate',
+    description: 'Learn why file validation should not trust extensions only.',
+    tags: ['Upload', 'MIME', 'Validation'],
+  },
+  {
+    slug: 'jwt-misconfiguration',
+    title: 'JWT Misconfiguration Lab',
+    difficulty: 'Intermediate',
+    description: 'Learn common JWT mistakes such as weak secret and missing verification.',
+    tags: ['JWT', 'Auth'],
+  },
+  {
+    slug: 'ssrf',
+    title: 'SSRF Simulation Lab',
+    difficulty: 'Intermediate',
+    description: 'Learn SSRF concepts using a safe simulated internal service.',
+    tags: ['SSRF', 'Backend'],
+  },
+];
