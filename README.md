@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VulnLabJS — Interactive Web Security Learning Lab
 
-## Getting Started
+[![Next.js Version](https://img.shields.io/badge/Next.js-16.2.6-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Tailwind CSS Version](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
+[![Prisma Version](https://img.shields.io/badge/Prisma-v7.8.0-2D3748?style=for-the-badge&logo=prisma)](https://prisma.io)
+[![Supabase](https://img.shields.io/badge/Supabase-Database-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com)
+[![Security Lab](https://img.shields.io/badge/Security-OWASP_Top_10-red?style=for-the-badge)](https://owasp.org)
 
-First, run the development server:
+**VulnLabJS** is an interactive web security learning platform (hands-on security lab) built on **Next.js (App Router)**, **Prisma 7 (with Postgres driver adapter)**, and **Supabase**. This project is specifically designed for developers, students, and security analysts to understand how classic security vulnerabilities (OWASP Top 10) occur in code and how to remediate them.
 
+---
+
+## Labs Roadmap & Topics
+
+This project is designed to simulate real-world vulnerability scenarios across 7 main lab modules:
+
+| Lab Module | Difficulty | Focus Area / Description |
+| :--- | :---: | :--- |
+| **IDOR (Insecure Direct Object Reference)** *(Active)* | Beginner | Exploit sensitive data of other users by manipulating predictable object ID parameters. |
+| **SQL Injection** | Beginner | Manipulate relational database queries due to a lack of server-side input sanitization. |
+| **Cross-Site Scripting (XSS)** | Beginner | Inject malicious JavaScript (Reflected & Stored) to be executed in the victim's browser. |
+| **Broken Access Control** | Intermediate | Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls. |
+| **Insecure File Upload** | Intermediate | Achieve Remote Code Execution (RCE) by uploading malicious files without MIME/extension validation. |
+| **JWT Misconfiguration** | Intermediate | Forge identity tokens due to weak secret keys or missing signature verification. |
+| **SSRF Simulation** | Intermediate | Exploit the backend server to make unauthorized requests to internal networks/simulated services. |
+
+---
+
+## Tech Stack & Architecture
+
+* **Framework:** Next.js 16 (React 19, App Router)
+* **Styling:** Tailwind CSS v4 & PostCSS
+* **ORM:** Prisma ORM v7 (Modular Client Generation)
+* **Database:** Supabase (PostgreSQL)
+* **Driver Adapter:** `@prisma/adapter-pg` & `pg` (Node Postgres)
+* **Runtime Compiler:** `tsx` & TypeScript
+
+---
+
+## Setup & Installation Guide
+
+Follow the steps below to run the lab in your local environment:
+
+### 1. Prerequisites
+Ensure you have the following installed:
+* [Node.js](https://nodejs.org) (v20 or higher)
+* A [Supabase](https://supabase.com) account (for a free cloud PostgreSQL database)
+
+### 2. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Skywalks567/vulnlabjs.git
+cd vulnlabjs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Configure Environment Variables
+Copy the `.env.example` file to `.env` and input your Supabase database credentials:
+```bash
+cp .env.example .env
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Configure your `.env` file with your Supabase credentials:
+* `DATABASE_URL`: Uses the pooling connection on port `6543` with the `?pgbouncer=true` parameter (for application runtime).
+* `DIRECT_URL`: Uses the direct PostgreSQL connection on port `5432` (for migrations/CLI).
+* `JWT_SECRET`: A secure random string for JWT signing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+DATABASE_URL="postgresql://postgres.yourdb:yourpassword@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+DIRECT_URL="postgresql://postgres.yourdb:yourpassword@aws-0-ap-southeast-1.pooler.supabase.com:5432/postgres"
+JWT_SECRET="replace-with-a-strong-secret-key"
+```
 
-## Learn More
+### 4. Install Dependencies
+```bash
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Sync Database Schema to Supabase
+Use the Prisma CLI to apply the full table schema (`LabUser`, `LabNote`, `LabProduct`) directly to your Supabase database:
+```bash
+npx prisma db push
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 6. Seed the Database
+Run the seed script to load mock user accounts (such as `admin`, `alice`, and `bob`) and initial product data into your Supabase database:
+```bash
+npm run prisma:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 7. Run the Development Server
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) in your browser to start exploring VulnLabJS!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Security Disclaimer & Warning
+
+> [!WARNING]
+> **THIS PROJECT IS INTENTIONALLY CONFIGURED WITH SECURITY VULNERABILITIES.**
+> * Do not deploy this application to public servers, open VPS hosting, or production environments.
+> * Use this project only in a local environment (`localhost`) for educational and web security training purposes.
+> * The developer is not responsible for any misuse of code or damage caused by using this repository outside of official learning purposes.
+
+---
+
