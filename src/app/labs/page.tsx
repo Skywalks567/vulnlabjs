@@ -1,38 +1,92 @@
+'use client';
+
+import LabCard from '@/components/labs/LabCard';
+import LabFilter from '@/components/labs/LabFilter';
+import LabStats from '@/components/labs/LabStats';
 import { labs } from '@/lib/lab';
-import Link from 'next/link';
+import { useMemo, useState } from 'react';
 
 export default function LabsPage() {
+  const [search, setSearch] = useState('');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('ALL');
+
+  const filtered = useMemo(() => {
+    return labs.filter((lab) => {
+      const q = search.toLowerCase();
+      const matchesSearch =
+        lab.title.toLowerCase().includes(q) ||
+        lab.description.toLowerCase().includes(q) ||
+        lab.tags.some((t) => t.toLowerCase().includes(q));
+      const matchesDifficulty =
+        selectedDifficulty === 'ALL' ||
+        lab.difficulty.toUpperCase() === selectedDifficulty;
+      return matchesSearch && matchesDifficulty;
+    });
+  }, [search, selectedDifficulty]);
+
   return (
-    <main className="mx-auto max-w-6xl px-6 py-10">
-      <h1 className="text-3xl font-bold">VulnLabJS Labs</h1>
-      <p className="mt-2 text-gray-600">
-        A hands-on web security learning lab for common OWASP vulnerabilities.
-      </p>
-
-      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {labs.map((lab) => (
-          <Link
-            key={lab.slug}
-            href={`/labs/${lab.slug}`}
-            className="rounded-xl border p-5 transition hover:bg-gray-50"
+    <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
+      {/* Page header */}
+      <div className="mb-10 border-b border-[var(--border)] pb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-px w-8 bg-[var(--red)]" />
+          <span
+            className="text-[10px] tracking-[0.3em] uppercase text-[var(--red)]"
+            style={{ fontFamily: 'var(--font-dm-mono)' }}
           >
-            <div className="text-sm text-gray-500">{lab.difficulty}</div>
-            <h2 className="mt-2 text-xl font-semibold">{lab.title}</h2>
-            <p className="mt-2 text-sm text-gray-600">{lab.description}</p>
+            OWASP Top 10 — Security Labs
+          </span>
+        </div>
+        <h1
+          className="text-3xl font-bold text-white tracking-tight"
+          style={{ fontFamily: 'var(--font-syne)' }}
+        >
+          All Labs
+        </h1>
+      </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {lab.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full bg-gray-100 px-2 py-1 text-xs"
-                >
-                  {tag}
-                </span>
+      {/* Body: sidebar + list */}
+      <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-10 lg:gap-14 items-start">
+        {/* Sidebar */}
+        <aside className="flex flex-col gap-6">
+          <LabStats />
+          <LabFilter
+            search={search}
+            setSearch={setSearch}
+            selectedDifficulty={selectedDifficulty}
+            setSelectedDifficulty={setSelectedDifficulty}
+          />
+        </aside>
+
+        {/* Lab list */}
+        <section>
+          {filtered.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filtered.map((lab, i) => (
+                <LabCard key={lab.slug} lab={lab} index={i} />
               ))}
             </div>
-          </Link>
-        ))}
+          ) : (
+            <div className="py-16 text-center border-b border-[var(--border)]">
+              <p
+                className="text-[13px] text-[#b8b8b8]"
+                style={{ fontFamily: 'var(--font-dm-mono)' }}
+              >
+                No labs match your filter.
+              </p>
+            </div>
+          )}
+
+          {filtered.length > 0 && (
+            <p
+              className="mt-4 text-[10px] text-[#999]"
+              style={{ fontFamily: 'var(--font-dm-mono)' }}
+            >
+              {filtered.length} of {labs.length} labs
+            </p>
+          )}
+        </section>
       </div>
-    </main>
+    </div>
   );
 }

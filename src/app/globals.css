@@ -1,26 +1,141 @@
 @import 'tailwindcss';
 
+/* ──────────────────────────────────────────────
+   Design Tokens
+────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #080808;
+  --fg: #e8e8e8;
+  --red: #c0392b;
+  --red-dim: #7a1e16;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --muted: #a8a8a8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: var(--font-syne);
+  --font-mono: var(--font-dm-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-syne), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ──────────────────────────────────────────────
+   Noise Texture Overlay
+────────────────────────────────────────────── */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.4;
+}
+
+/* ──────────────────────────────────────────────
+   Cyber Blueprint Grid & Glow
+────────────────────────────────────────────── */
+.cyber-blueprint-grid {
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 20%, #080808 90%),
+    linear-gradient(rgba(192, 57, 43, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 57, 43, 0.055) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
+  background-position: center center;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────
+   Fine Horizontal Rule Lines (Editorial grid)
+────────────────────────────────────────────── */
+.editorial-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 79px,
+    rgba(255, 255, 255, 0.025) 79px,
+    rgba(255, 255, 255, 0.025) 80px
+  );
+}
+
+/* ──────────────────────────────────────────────
+   Red accent bar — left border treatment
+────────────────────────────────────────────── */
+.red-bar {
+  border-left: 3px solid var(--red);
+}
+
+/* ──────────────────────────────────────────────
+   Marquee scroll animation
+────────────────────────────────────────────── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 22s linear infinite;
+  will-change: transform;
+}
+
+/* ──────────────────────────────────────────────
+   Staggered reveal on load
+────────────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: fade-up 0.7s ease both;
+}
+.reveal-1 {
+  animation-delay: 0.05s;
+}
+.reveal-2 {
+  animation-delay: 0.15s;
+}
+.reveal-3 {
+  animation-delay: 0.25s;
+}
+.reveal-4 {
+  animation-delay: 0.4s;
+}
+.reveal-5 {
+  animation-delay: 0.55s;
+}
+
+/* ──────────────────────────────────────────────
+   Terminal cursor blink
+────────────────────────────────────────────── */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
 }
