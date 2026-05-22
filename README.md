@@ -14,15 +14,15 @@
 
 This project is designed to simulate real-world vulnerability scenarios across 7 main lab modules:
 
-| Lab Module                                             |  Difficulty  | Focus Area / Description                                                                              |
-| :----------------------------------------------------- | :----------: | :---------------------------------------------------------------------------------------------------- |
-| **IDOR (Insecure Direct Object Reference)** _(Active)_ |   Beginner   | Exploit sensitive data of other users by manipulating predictable object ID parameters.               |
-| **SQL Injection**                                      |   Beginner   | Manipulate relational database queries due to a lack of server-side input sanitization.               |
-| **Cross-Site Scripting (XSS)**                         |   Beginner   | Inject malicious JavaScript (Reflected & Stored) to be executed in the victim's browser.              |
-| **Broken Access Control**                              | Intermediate | Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls. |
-| **Insecure File Upload**                               | Intermediate | Achieve Remote Code Execution (RCE) by uploading malicious files without MIME/extension validation.   |
-| **JWT Misconfiguration**                               | Intermediate | Forge identity tokens due to weak secret keys or missing signature verification.                      |
-| **SSRF Simulation**                                    | Intermediate | Exploit the backend server to make unauthorized requests to internal networks/simulated services.     |
+| Lab Module                                  |  Difficulty  | Focus Area / Description                                                                              | Status / Documentation                       |
+| :------------------------------------------ | :----------: | :---------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| **IDOR (Insecure Direct Object Reference)** |   Beginner   | Exploit sensitive data of other users by manipulating predictable object ID parameters.               | Completed ([Writeup](docs/writeups/IDOR.md)) |
+| **SQL Injection**                           |   Beginner   | Manipulate relational database queries due to a lack of server-side input sanitization.               | Coming Soon                                  |
+| **Cross-Site Scripting (XSS)**              |   Beginner   | Inject malicious JavaScript (Reflected & Stored) to be executed in the victim's browser.              | Coming Soon                                  |
+| **Broken Access Control**                   | Intermediate | Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls. | On Progress                                  |
+| **Insecure File Upload**                    | Intermediate | Achieve Remote Code Execution (RCE) by uploading malicious files without MIME/extension validation.   | Coming Soon                                  |
+| **JWT Misconfiguration**                    | Intermediate | Forge identity tokens due to weak secret keys or missing signature verification.                      | Coming Soon                                  |
+| **SSRF Simulation**                         | Intermediate | Exploit the backend server to make unauthorized requests to internal networks/simulated services.     | Coming Soon                                  |
 
 ---
 
