@@ -18,6 +18,8 @@
   --color-foreground: var(--fg);
   --font-sans: var(--font-syne);
   --font-mono: var(--font-dm-mono);
+  --color-red: var(--red);
+  --color-red-dim: var(--red-dim);
 }
 
 body {
