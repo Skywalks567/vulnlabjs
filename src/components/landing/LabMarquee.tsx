@@ -23,7 +23,7 @@ export default function LabMarquee() {
         {items.map((lab, i) => (
           <div key={i} className="flex items-center gap-0 shrink-0">
             <span
-              className="text-[11px] tracking-[0.2em] uppercase text-[#444] px-6 whitespace-nowrap"
+              className="text-[11px] tracking-[0.2em] uppercase text-[#b8b8b8] px-6 whitespace-nowrap"
               style={{ fontFamily: 'var(--font-dm-mono)' }}
             >
               {lab}

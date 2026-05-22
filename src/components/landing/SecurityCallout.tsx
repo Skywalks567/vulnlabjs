@@ -4,7 +4,7 @@ export default function SecurityCallout() {
     <section className="reveal reveal-5 mt-16 mb-8">
       <div className="red-bar pl-5 py-1">
         <p
-          className="text-[11px] leading-[1.8] text-[#666] max-w-2xl"
+          className="text-[11px] leading-[1.8] text-[#c8c8c8] max-w-2xl"
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         >
           <span className="text-[var(--red)] font-medium">warning:</span> This

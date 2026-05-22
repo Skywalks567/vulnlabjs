@@ -35,7 +35,9 @@ export default function FeatureStrip() {
             <h3 className="text-[17px] font-semibold text-white leading-snug mb-3">
               {f.title}
             </h3>
-            <p className="text-[13px] leading-[1.75] text-[#666]">{f.body}</p>
+            <p className="text-[13px] leading-[1.75] text-[#c0c0c0]">
+              {f.body}
+            </p>
           </div>
         ))}
       </div>

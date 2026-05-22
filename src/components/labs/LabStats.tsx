@@ -21,7 +21,7 @@ export default function LabStats() {
       {STATS.map((s) => (
         <div key={s.label} className="bg-[#080808] px-4 py-3">
           <div
-            className="text-[9px] tracking-[0.2em] uppercase text-[#444] mb-1"
+            className="text-[9px] tracking-[0.2em] uppercase text-[#b8b8b8] mb-1"
             style={{ fontFamily: 'var(--font-dm-mono)' }}
           >
             {s.label}

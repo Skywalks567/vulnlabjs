@@ -20,7 +20,7 @@ export default function Home() {
           {/* Right: Terminal — floats alongside headline */}
           <div className="reveal reveal-2 lg:pt-6 w-full">
             <div
-              className="text-[9px] tracking-[0.3em] uppercase text-[#444] mb-3"
+              className="text-[9px] tracking-[0.3em] uppercase text-[#aaa] mb-3"
               style={{ fontFamily: 'var(--font-dm-mono)' }}
             >
               Quick setup
@@ -32,7 +32,7 @@ export default function Home() {
               {['Next.js 16', 'Prisma 7', 'Supabase', 'TypeScript'].map((s) => (
                 <span
                   key={s}
-                  className="text-[10px] border border-[var(--border)] text-[#555] px-2.5 py-1 tracking-wide"
+                  className="text-[10px] border border-[var(--border)] text-[#aaa] px-2.5 py-1 tracking-wide"
                   style={{ fontFamily: 'var(--font-dm-mono)' }}
                 >
                   {s}

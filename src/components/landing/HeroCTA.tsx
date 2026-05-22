@@ -29,7 +29,7 @@ export default function HeroCTA() {
         href="https://github.com/Skywalks567/vulnlabjs"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 border border-[var(--border-strong)] px-7 py-3.5 text-[13px] text-[#888] tracking-wide transition-colors duration-200 hover:text-white hover:border-white/30"
+        className="inline-flex items-center gap-2 border border-[var(--border-strong)] px-7 py-3.5 text-[13px] text-[#b8b8b8] tracking-wide transition-colors duration-200 hover:text-white hover:border-white/30"
         style={{ fontFamily: 'var(--font-syne)' }}
       >
         <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

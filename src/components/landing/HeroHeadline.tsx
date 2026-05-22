@@ -25,7 +25,7 @@ export default function HeroHeadline() {
 
       {/* Sub-descriptor */}
       <p
-        className="mt-8 max-w-md text-[15px] leading-[1.7] text-[#888]"
+        className="mt-8 max-w-md text-[15px] leading-[1.7] text-[#b8b8b8]"
         style={{ fontFamily: 'var(--font-dm-mono)' }}
       >
         A self-hosted penetration testing sandbox. Run real exploits against

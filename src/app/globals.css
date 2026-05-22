@@ -10,7 +10,7 @@
   --red-dim: #7a1e16;
   --border: rgba(255, 255, 255, 0.07);
   --border-strong: rgba(255, 255, 255, 0.15);
-  --muted: #5a5a5a;
+  --muted: #a8a8a8;
 }
 
 @theme inline {
@@ -35,6 +35,22 @@ body {
   background-repeat: repeat;
   background-size: 200px 200px;
   opacity: 0.4;
+}
+
+/* ──────────────────────────────────────────────
+   Cyber Blueprint Grid & Glow
+────────────────────────────────────────────── */
+.cyber-blueprint-grid {
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 20%, #080808 90%),
+    linear-gradient(rgba(192, 57, 43, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(192, 57, 43, 0.055) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
+  background-position: center center;
+  pointer-events: none;
 }
 
 /* ──────────────────────────────────────────────

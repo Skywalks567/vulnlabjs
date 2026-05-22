@@ -18,12 +18,12 @@ export default function EnvCard({
   return (
     <Link
       href={href}
-      className="group relative flex flex-col justify-between gap-6 border border-[var(--border-strong)] p-6 transition-colors duration-200 hover:border-[var(--red)] hover:bg-white/[0.02]"
+      className="group relative flex flex-col justify-between gap-6 border border-white/10 bg-[#0e0e0e] p-6 transition-all duration-200 hover:border-[var(--red)] hover:bg-[#121212] hover:-translate-y-0.5"
     >
       {/* Top row */}
       <div className="flex items-start justify-between gap-4">
         <span
-          className="text-[9px] tracking-[0.3em] uppercase text-[var(--muted)]"
+          className="text-[9px] tracking-[0.3em] uppercase text-[#aaa]"
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         >
           {label}
@@ -32,7 +32,7 @@ export default function EnvCard({
           className={`text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 border ${
             accent
               ? 'border-[var(--red)] text-[var(--red)]'
-              : 'border-[var(--border-strong)] text-[#4ade80]'
+              : 'border-white/20 text-[#4ade80]'
           }`}
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         >
@@ -42,7 +42,7 @@ export default function EnvCard({
 
       {/* Description */}
       <p
-        className="text-[12px] text-[#555] leading-relaxed"
+        className="text-[12px] text-[#b0b0b0] leading-relaxed"
         style={{ fontFamily: 'var(--font-dm-mono)' }}
       >
         {description}

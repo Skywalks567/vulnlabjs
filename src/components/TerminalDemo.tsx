@@ -36,20 +36,26 @@ export default function HeroTerminal() {
     if (type === 'cmd') return 'text-white';
     if (type === 'ok') return 'text-[#4ade80]';
     if (type === 'warn') return 'text-[var(--red)] font-medium';
-    return 'text-[#666]';
+    return 'text-[#b0b0b0]';
   };
 
   return (
     <div
-      className="w-full border border-[var(--border-strong)] bg-[#0e0e0e] rounded-sm overflow-hidden"
+      className="w-full relative border border-[var(--border-strong)] bg-[#0e0e0e] rounded-sm overflow-hidden"
       style={{ fontFamily: 'var(--font-dm-mono)' }}
     >
+      {/* Cyber Corner Brackets */}
+      <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-white/20 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-white/20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-white/20 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-white/20 pointer-events-none" />
+
       {/* window bar */}
       <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--border)] bg-[#111]">
         <span className="h-2.5 w-2.5 rounded-full bg-[var(--red)]/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#555]" />
-        <span className="ml-3 text-[10px] text-[#444] tracking-wider select-none">
+        <span className="ml-3 text-[10px] text-[#888] tracking-wider select-none">
           vulnlabjs — zsh
         </span>
       </div>

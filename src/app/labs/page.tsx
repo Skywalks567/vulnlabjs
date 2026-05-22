@@ -1,7 +1,7 @@
 'use client';
 
+import LabCard from '@/components/labs/LabCard';
 import LabFilter from '@/components/labs/LabFilter';
-import LabRow from '@/components/labs/LabRow';
 import LabStats from '@/components/labs/LabStats';
 import { labs } from '@/lib/lab';
 import { useMemo, useState } from 'react';
@@ -60,25 +60,16 @@ export default function LabsPage() {
 
         {/* Lab list */}
         <section>
-          {/* Column headers */}
-          <div
-            className="hidden md:grid grid-cols-[2rem_1fr_auto_auto] gap-6 pb-3 border-b border-[var(--border)] text-[9px] tracking-[0.2em] uppercase text-[#333]"
-            style={{ fontFamily: 'var(--font-dm-mono)' }}
-          >
-            <span>#</span>
-            <span>Lab</span>
-            <span>Tags</span>
-            <span>Level</span>
-          </div>
-
           {filtered.length > 0 ? (
-            filtered.map((lab, i) => (
-              <LabRow key={lab.slug} lab={lab} index={i} />
-            ))
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filtered.map((lab, i) => (
+                <LabCard key={lab.slug} lab={lab} index={i} />
+              ))}
+            </div>
           ) : (
             <div className="py-16 text-center border-b border-[var(--border)]">
               <p
-                className="text-[13px] text-[#444]"
+                className="text-[13px] text-[#b8b8b8]"
                 style={{ fontFamily: 'var(--font-dm-mono)' }}
               >
                 No labs match your filter.
@@ -88,7 +79,7 @@ export default function LabsPage() {
 
           {filtered.length > 0 && (
             <p
-              className="mt-4 text-[10px] text-[#333]"
+              className="mt-4 text-[10px] text-[#999]"
               style={{ fontFamily: 'var(--font-dm-mono)' }}
             >
               {filtered.length} of {labs.length} labs

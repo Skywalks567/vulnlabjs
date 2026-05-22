@@ -1,3 +1,4 @@
+import CyberMesh from '@/components/CyberMesh';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import type { Metadata } from 'next';
@@ -34,6 +35,8 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${dmMono.variable} h-full`}>
       <body className="relative min-h-full flex flex-col bg-[#080808] text-[#e8e8e8] selection:bg-[#c0392b]/40 selection:text-white antialiased">
         <div className="pointer-events-none fixed inset-0 z-0 noise-overlay" />
+        <div className="pointer-events-none fixed inset-0 z-0 cyber-blueprint-grid" />
+        <CyberMesh />
         <div className="relative z-10 flex min-h-full flex-col">
           <Navbar />
           <main className="flex-grow flex flex-col">{children}</main>

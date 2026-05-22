@@ -20,7 +20,7 @@ export default function LabFilter({
       {/* Search */}
       <div className="flex flex-col gap-1.5">
         <label
-          className="text-[9px] tracking-[0.2em] uppercase text-[#444]"
+          className="text-[9px] tracking-[0.2em] uppercase text-[#b8b8b8]"
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         >
           Search
@@ -30,7 +30,7 @@ export default function LabFilter({
           placeholder="e.g. sql, xss, jwt..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full border border-[var(--border)] bg-transparent px-3 py-2.5 text-[12px] text-white placeholder-[#333] outline-none focus:border-[var(--red)] transition-colors"
+          className="w-full border border-[var(--border-strong)] bg-transparent px-3 py-2.5 text-[12px] text-white placeholder-[#888] outline-none focus:border-[var(--red)] transition-colors"
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         />
       </div>
@@ -38,7 +38,7 @@ export default function LabFilter({
       {/* Difficulty filter */}
       <div className="flex flex-col gap-1.5">
         <div
-          className="text-[9px] tracking-[0.2em] uppercase text-[#444]"
+          className="text-[9px] tracking-[0.2em] uppercase text-[#b8b8b8]"
           style={{ fontFamily: 'var(--font-dm-mono)' }}
         >
           Difficulty
@@ -54,7 +54,7 @@ export default function LabFilter({
                 onClick={() =>
                   setSelectedDifficulty(d === 'All' ? 'ALL' : d.toUpperCase())
                 }
-                className={`w-full text-left px-4 py-2.5 text-[11px] transition-colors ${active ? 'bg-[var(--red)] text-white' : 'bg-[#080808] text-[#555] hover:text-white hover:bg-white/[0.03]'}`}
+                className={`w-full text-left px-4 py-2.5 text-[11px] transition-colors ${active ? 'bg-[var(--red)] text-white' : 'bg-[#080808] text-[#c8c8c8] hover:text-white hover:bg-white/[0.03]'}`}
                 style={{ fontFamily: 'var(--font-dm-mono)' }}
               >
                 {d}
