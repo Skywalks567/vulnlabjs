@@ -103,7 +103,7 @@ export async function GET() {
       return NextResponse.json({
         status: 'SECURED',
         usersCount: 3,
-        flag: 'CTF{broken_access_control_escalation_impossible}',
+        flag: 'CTF{broken_access_control_escalation}',
       });
     }
   } catch (err) {
