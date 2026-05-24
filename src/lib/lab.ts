@@ -22,10 +22,11 @@ export const labs = [
     tags: ['Access Control', 'API'],
   },
   {
-    slug: 'broken-access-control',
+    slug: 'broken-access',
     title: 'Broken Access Control Lab',
     difficulty: 'Intermediate',
-    description: 'Learn role bypass and missing authorization checks.',
+    description:
+      'Bypass authorization checks, manipulate user roles (role bypass), and bypass administrative controls.',
     tags: ['Authorization', 'Admin'],
   },
   {
