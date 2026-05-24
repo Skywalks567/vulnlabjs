@@ -10,7 +10,7 @@ interface Lab {
 
 const DIFFICULTY_COLOR: Record<string, string> = {
   beginner: 'border-[#4ade80]/60 text-[#4ade80]',
-  intermediate: 'border-[var(--red)]/60 text-[var(--red)]',
+  intermediate: 'border-[#f39c12]/60 text-[#f39c12]',
 };
 
 export default function LabCard({ lab, index }: { lab: Lab; index: number }) {

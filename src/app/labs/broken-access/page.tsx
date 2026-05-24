@@ -1,18 +1,21 @@
 import Breadcrumb from '@/components/labs/Breadcrumb';
 import EnvCard from '@/components/labs/EnvCard';
-import IdorHeader from '@/components/labs/idor/IdorHeader';
-import MissionDossier from '@/components/labs/idor/MissionDossier';
+import BrokenAccessHeader from '@/components/labs/broken-access/BrokenAccessHeader';
+import BrokenAccessMission from '@/components/labs/broken-access/BrokenAccessMission';
 import Link from 'next/link';
 
-export default function IdorPage() {
+export default function BrokenAccessPage() {
   return (
     <div className="editorial-lines min-h-screen">
       <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
         {/* Breadcrumb */}
-        <Breadcrumb items={[{ label: 'IDOR' }]} backHref="/labs" />
+        <Breadcrumb
+          items={[{ label: 'Broken Access Control' }]}
+          backHref="/labs"
+        />
 
         {/* Modular Header */}
-        <IdorHeader />
+        <BrokenAccessHeader />
 
         {/* 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-12 lg:gap-16 items-start">
@@ -23,14 +26,14 @@ export default function IdorPage() {
                 className="text-[14px] text-gray-200 leading-relaxed max-w-3xl"
                 style={{ fontFamily: 'var(--font-dm-mono)' }}
               >
-                Insecure Direct Object Reference occurs when a web application
-                exposes direct access to database records based on user-supplied
-                parameters, without verifying if the user has correct ownership
-                rights.
+                Broken Access Control occurs when a web application fails to
+                properly enforce privilege separation and user authorization
+                boundaries, allowing unauthorized users to perform actions or
+                access resources outside their intended roles.
               </p>
             </div>
 
-            <MissionDossier />
+            <BrokenAccessMission />
           </div>
 
           {/* Right: environments selection list & writeup */}
@@ -46,15 +49,15 @@ export default function IdorPage() {
                 <EnvCard
                   label="Vulnerable Environment"
                   badge="exploitable"
-                  description="A simple note-taking application without ownership validation. Every requested ID is processed directly by the database query."
-                  href="/labs/idor/vulnerable"
+                  description="An administrative console where user authorization checks are completely absent or depend blindly on client-controlled parameters."
+                  href="/labs/broken-access/vulnerable"
                   accent
                 />
                 <EnvCard
                   label="Secured Environment"
                   badge="patched"
-                  description="The same note-taking application but with strict ownerId verification on every single database query."
-                  href="/labs/idor/fixed"
+                  description="The same administrative console fortified with robust server-side role-based access validation (RBAC) and secure cookies."
+                  href="/labs/broken-access/fixed"
                 />
               </div>
             </div>
@@ -62,7 +65,7 @@ export default function IdorPage() {
             {/* Cybernetic Cyberpunk Writeup & Analysis Card */}
             <div className="border-t border-[var(--border)] pt-6">
               <Link
-                href="/labs/idor/writeup"
+                href="/labs/broken-access/writeup"
                 className="group block relative border border-[var(--border-strong)] bg-[#0e0e0e] p-4 font-mono transition-all duration-300 hover:border-[var(--red)] hover:bg-[#111]"
               >
                 {/* Cyberpunk accent corners */}
@@ -80,8 +83,8 @@ export default function IdorPage() {
                       Threat Report &amp; Writeup
                     </h3>
                     <p className="text-[9.5px] text-[#777] mt-1.5 leading-relaxed font-sans normal-case group-hover:text-white/60 transition-colors">
-                      Review complete vulnerability analysis, exploitation
-                      steps, and secure coding blueprint.
+                      Review complete privilege escalation vulnerability
+                      analysis, role bypass mechanics, and defense blueprints.
                     </p>
                   </div>
                   <span className="text-[var(--muted)] group-hover:text-[var(--red)] group-hover:translate-x-0.5 transition-all text-xs font-bold shrink-0 self-center">

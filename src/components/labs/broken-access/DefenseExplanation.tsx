@@ -3,19 +3,39 @@
 import { useState } from 'react';
 
 const VULN_CODE = `// Insecure GET Route
-const note = await prisma.labNote.findUnique({
-  where: { id }
-}); // Bypasses ownership check!`;
+export async function GET() {
+  const cookieStore = await cookies();
+  const role = cookieStore.get('role')?.value || 'user';
+  
+  // ❌ CRITICAL: Blindly trusts client-supplied cookie!
+  if (role.toLowerCase() === 'admin') {
+    return NextResponse.json({
+      status: 'COMPROMISED',
+      flag: 'CTF{broken_access_control_escalation}',
+      logs: [...]
+    });
+  }
+}`;
 
-const FIXED_CODE = `// Secure GET Route (Owner Validation)
-const note = await prisma.labNote.findUnique({
-  where: { id }
-});
+const FIXED_CODE = `// Secure GET Route (Server-Side Session Validation)
+export async function GET() {
+  // ✅ SECURE: Simulate validating active user session ID (Alice, ID: 2)
+  const sessionUserId = 2;
 
-// Strict ownership check!
-if (note.ownerId !== currentUserId) {
+  // ✅ SECURE: Fetch actual role securely from the database
+  const user = await prisma.labUser.findUnique({
+    where: { id: sessionUserId },
+    select: { role: true }
+  });
+
+  if (user && user.role.toLowerCase() === 'admin') {
+    return NextResponse.json({
+      status: 'SECURED',
+      flag: 'CTF{broken_access_control_escalation}'
+    });
+  }
   return NextResponse.json(
-    { error: 'Unauthorized' },
+    { error: 'Forbidden' },
     { status: 403 }
   );
 }`;
