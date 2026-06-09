@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 
-// Global in-memory comment store for development/simulator persistence
 const comments = [
   {
     id: 1,
@@ -42,7 +41,7 @@ export async function POST(request: Request) {
     const newComment = {
       id: comments.length + 1,
       author: author.trim(),
-      content: content.trim(), // ❌ CRITICAL: No server-side sanitization!
+      content: content.trim(),
       timestamp: new Date().toISOString(),
     };
 
