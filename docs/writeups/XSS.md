@@ -1,3 +1,5 @@
+[← Back](../../README.md)
+
 # VulnLabJS: Cross-Site Scripting (XSS) Writeup
 
 This document provides a comprehensive technical walkthrough of the Cross-Site Scripting (XSS) vulnerability lab module in VulnLabJS. It covers the architectural context, root cause analysis, exploitation methodology, and remediation blueprint for both Reflected and Stored XSS vectors.
