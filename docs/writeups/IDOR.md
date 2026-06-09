@@ -1,3 +1,5 @@
+[← Back](../../README.md)
+
 # VulnLabJS: Insecure Direct Object Reference (IDOR) Writeup
 
 This document provides a comprehensive technical walkthrough of the Insecure Direct Object Reference (IDOR) vulnerability lab module in VulnLabJS. It covers the architectural context, root cause analysis, exploitation methodology, and remediation blueprint.

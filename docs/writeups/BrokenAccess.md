@@ -1,3 +1,5 @@
+[← Back](../../README.md)
+
 # VulnLabJS: Broken Access Control (Vertical Privilege Escalation) Writeup
 
 This document provides a comprehensive technical walkthrough of the Broken Access Control (Vertical Privilege Escalation) vulnerability lab module in VulnLabJS. It covers the architectural context, root cause analysis, exploitation methodology, and remediation blueprint.
