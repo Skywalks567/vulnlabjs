@@ -1,6 +1,6 @@
 'use client';
 import Breadcrumb from '@/components/labs/Breadcrumb';
-import ConsolePanel from '@/components/labs/xss/vulnerable/ConsolePanel';
+import ConsolePanel from '@/components/labs/xss/ConsolePanel';
 import ExploitHint from '@/components/labs/xss/vulnerable/ExploitHint';
 import MockMessageBoard from '@/components/labs/xss/vulnerable/MockMessageBoard';
 import { useEffect, useState } from 'react';
